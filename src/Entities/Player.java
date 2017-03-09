@@ -3,9 +3,32 @@ package Entities;
 public class Player {
 	private String name;
 	private int health = 100;
+	private int healthMax = 100;
 	private int attack = 25;
 	private int defense = 50;
 	private int damage = 5;
+	private int xp = 0;
+	private int playerLevel = 0;
+	
+	
+	public int getHealthMax() {
+		return healthMax;
+	}
+	public void setHealthMax(int healthMax) {
+		this.healthMax = healthMax;
+	}
+	public int getXp() {
+		return xp;
+	}
+	public void setXp(int xp) {
+		this.xp = xp;
+	}
+	public int getPlayerLevel() {
+		return playerLevel;
+	}
+	public void setPlayerLevel(int playerLevel) {
+		this.playerLevel = playerLevel;
+	}
 	public int getDMG() {
 		return damage;
 	}
@@ -51,6 +74,7 @@ public class Player {
 		target.setHP(target.getHP() - hitFor);
 		return hitFor;
 	}
+	
 	public int heavyStrike(Creature target){
 		int hitFor = 0;
 		System.out.println("You use HeavyStrike!");
@@ -65,6 +89,7 @@ public class Player {
 		target.setHP(target.getHP() - hitFor);
 		return hitFor;
 	}
+	
 	public void recover(){
 		int hitFor = 0;
 		System.out.println("You use Recover!");
@@ -80,4 +105,28 @@ public class Player {
 		}
 		System.out.println("You now have " + this.getHP() + "!");
 	}
+	public void levelUp(){
+		this.setHealthMax(this.getHealthMax()+20);
+		this.setATK(this.getATK()+5);
+		this.setDFNS(this.getDFNS()+10);
+		this.setDMG(this.getDMG()+2);
+		this.setHP(this.getHealthMax());
+		System.out.println("Level up!");
+	}
+	public void checkLevel(){
+		int xpCount = this.getXp();
+		
+		for(int i=1; i<=xpCount; i++){
+			
+			for(int pl = this.getPlayerLevel(); pl < 50; pl++){
+				
+				if(i >= (25*pl) && this.getPlayerLevel() < pl){
+					this.setPlayerLevel(this.getPlayerLevel() + 1);
+					this.levelUp();
+				}
+			}
+		}
+		System.out.println("You've reached level "+this.getPlayerLevel()+"!");
+	}
+	
 }

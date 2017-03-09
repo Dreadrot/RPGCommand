@@ -2,8 +2,12 @@ package Entities;
 
 public class BigCreature extends Creature {
 
+	public BigCreature() {
+		this.generateBigName();
+	}
 	public String generateBigName(){
 		int nameNum = (int) Math.ceil(Math.random() * 100);
+		System.out.println(nameNum);
 		String name = "";
 		if(nameNum >= 0 && nameNum < 20){
 			name = "Centaur";

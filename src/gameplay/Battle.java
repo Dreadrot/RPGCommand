@@ -22,7 +22,7 @@ public final class Battle{
 	}
 	public static String fight(Player player, Creature creature){
 		String winner = "";
-		System.out.println("Brace yourself! A " + creature.getName() + "Approaches!");
+		System.out.println("Brace yourself! A " + creature.getName() + " approaches!");
 		while (creature.getHP() > 0 && player.getHP() > 0) {
 			System.out.println("What do you wish to do?");
 			System.out.println("A. QUICKSTRIKE, B. HEAVYSTRIKE, C. RECOVER (A, B or C)");

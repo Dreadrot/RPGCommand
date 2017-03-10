@@ -115,17 +115,14 @@ public class Player {
 	}
 	public void checkLevel(){
 		int xpCount = this.getXp();
-		
-		for(int i=1; i<=xpCount; i++){
-			
-			for(int pl = this.getPlayerLevel(); pl < 50; pl++){
-				
-				if(i >= (25*pl) && this.getPlayerLevel() < pl){
-					this.setPlayerLevel(this.getPlayerLevel() + 1);
-					this.levelUp();
-				}
+
+		for (int pl = this.getPlayerLevel(); pl < 50; pl++) {
+			for (int i = 25*pl; i <= xpCount; i++) {
+				this.setPlayerLevel(this.getPlayerLevel() + 1);
+				this.levelUp();
 			}
 		}
+		
 		System.out.println("You've reached level "+this.getPlayerLevel()+"!");
 	}
 	

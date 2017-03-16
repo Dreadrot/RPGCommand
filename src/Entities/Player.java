@@ -99,6 +99,9 @@ public class Player {
 			this.setHP(this.getHP() + this.getDMG() + 2);
 			System.out.println("Success!");
 			System.out.println(hitFor + "HP recovered!");
+			if(this.getHP() > this.getHealthMax()){
+				this.setHP(this.getHealthMax());
+			}
 		}else{
 			System.out.println("Failure!");
 			this.setHP(this.getHP() - 2);
@@ -112,6 +115,7 @@ public class Player {
 		this.setDMG(this.getDMG()+2);
 		this.setHP(this.getHealthMax());
 		System.out.println("Level up!");
+		System.out.println("You've reached level "+this.getPlayerLevel()+"!");
 	}
 	public void checkLevel(){
 		int xpCount = this.getXp();
@@ -123,7 +127,6 @@ public class Player {
 			}
 		}
 		
-		System.out.println("You've reached level "+this.getPlayerLevel()+"!");
 	}
 	
 }

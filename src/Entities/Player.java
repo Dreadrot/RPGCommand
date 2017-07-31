@@ -8,7 +8,7 @@ public class Player {
 	private int defense = 50;
 	private int damage = 5;
 	private int xp = 0;
-	private int playerLevel = 0;
+	private int playerLevel = 1;
 	
 	
 	public int getHealthMax() {
@@ -108,22 +108,26 @@ public class Player {
 		}
 		System.out.println("You now have " + this.getHP() + "!");
 	}
+	
 	public void levelUp(){
 		this.setHealthMax(this.getHealthMax()+20);
 		this.setATK(this.getATK()+5);
 		this.setDFNS(this.getDFNS()+10);
 		this.setDMG(this.getDMG()+2);
 		this.setHP(this.getHealthMax());
+		this.setPlayerLevel(this.getPlayerLevel()+1);
 		System.out.println("Level up!");
 		System.out.println("You've reached level "+this.getPlayerLevel()+"!");
 	}
+	
 	public void checkLevel(){
 		int xpCount = this.getXp();
-
-		for (int pl = this.getPlayerLevel(); pl < 50; pl++) {
-			for (int i = 25*pl; i <= xpCount; i++) {
-				this.setPlayerLevel(this.getPlayerLevel() + 1);
-				this.levelUp();
+			//set player level cap to 50
+		if(this.getPlayerLevel() <=50){
+			for(int i = 1; i < xpCount; i++){
+				if(i > this.getPlayerLevel()*this.getPlayerLevel()*25){
+					this.levelUp();
+				}
 			}
 		}
 		
